@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import themeConfig from "../../config.json";
 
-const FEED_URL = import.meta.env.VITE_FEED_URL ?? "https://asit.blog/feed.json";
+const FEED_URL = import.meta.env.VITE_FEED_URL;
 
 function formatDate(isoDate) {
   return new Date(isoDate).toLocaleString("en-US", {
@@ -79,6 +79,11 @@ export default function ThemePreview() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!FEED_URL) {
+      setError("Set VITE_FEED_URL to your blog's JSON Feed URL.");
+      return;
+    }
+
     fetch(FEED_URL)
       .then((response) => {
         if (!response.ok) {
@@ -93,7 +98,7 @@ export default function ThemePreview() {
   const avatar =
     feed?.icon ??
     "https://micro.blog/images/default-avatar.png";
-  const siteTitle = feed?.title ?? "Asit Khanda";
+  const siteTitle = feed?.title ?? "My Blog";
 
   return (
     <>

@@ -10,7 +10,7 @@ const root = path.resolve(__dirname, "..");
 const devDir = path.join(root, "dev");
 const themesDir = path.join(devDir, "themes");
 const blankDir = path.join(themesDir, "theme-blank");
-const alpineLink = path.join(themesDir, "theme-alpine");
+const minimismLink = path.join(themesDir, "theme-minimism");
 const blankRepo = "https://github.com/microdotblog/theme-blank.git";
 
 mkdirSync(themesDir, { recursive: true });
@@ -23,9 +23,9 @@ if (!existsSync(blankDir)) {
   console.log("theme-blank already present");
 }
 
-if (existsSync(alpineLink)) {
-  rmSync(alpineLink, { recursive: true, force: true });
+if (existsSync(minimismLink)) {
+  rmSync(minimismLink, { recursive: true, force: true });
 }
 
-symlinkSync(root, alpineLink, "dir");
-console.log("Linked theme-alpine -> repo root");
+symlinkSync(root, minimismLink, "dir");
+console.log("Linked theme-minimism -> repo root");

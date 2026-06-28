@@ -1,7 +1,7 @@
 {
-  "name": "theme-alpine",
+  "name": "theme-minimism",
   "private": true,
-  "description": "Custom Alpine theme for asit.blog with local preview and Agentation feedback",
+  "description": "Minimism — a Micro.blog theme forked from Alpine, with local Hugo preview tooling",
   "scripts": {
     "setup": "node scripts/setup-dev.mjs",
     "sync": "node scripts/sync-feed.mjs",

@@ -1,1 +1,8 @@
+name = "Minimism"
+license = "MIT"
+description = "A minimalist Micro.blog theme forked from Alpine, with dark mode, accent colors, and responsive navigation."
+tags = ["micro.blog", "blog", "minimal", "responsive"]
+min_version = "0.110.0"
 
+[author]
+  name = "Minimism contributors"

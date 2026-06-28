@@ -1,27 +1,63 @@
-# Alpine theme for Micro.blog
+# Minimism for Micro.blog
 
-Custom fork of the [Alpine theme](https://github.com/microdotblog/theme-alpine) for [asit.blog](https://asit.blog/).
+A minimalist Hugo theme for [Micro.blog](https://micro.blog/), forked from the official [Alpine theme](https://github.com/microdotblog/theme-alpine). Minimism keeps Alpine's compact layout and adds dark mode, accent color controls, a responsive navigation menu, and an overflow "More" submenu for extra pages.
 
-Hugo theme for Micro.blog, based on Marfa theme, which was based on [NeoCactus](https://github.com/mmarfil/neocactus/fork) and [Cactus](https://github.com/eudicots/Cactus) for Jekyll. Mostly the same design as Marfa but with a more compact header.
+Alpine itself builds on the Marfa theme, which traces back to [NeoCactus](https://github.com/mmarfil/neocactus/fork) and [Cactus](https://github.com/eudicots/Cactus) for Jekyll.
 
-![screenshot](https://raw.githubusercontent.com/microdotblog/theme-alpine/master/screenshot/home.png)
+![Alpine screenshot](https://raw.githubusercontent.com/microdotblog/theme-alpine/master/screenshot/home.png)
 
-## Remotes
+## Features
 
-| Remote | URL |
-|--------|-----|
-| `origin` | `https://github.com/asitkhanda/theme-alpine` (your fork) |
-| `upstream` | `https://github.com/microdotblog/theme-alpine` (official theme) |
+- Compact header with avatar, site title, and navigation
+- Dark mode toggle with persistent preference (localStorage)
+- Accent color picker with multiple palette options
+- Desktop "More" dropdown for overflow menu items (e.g. Archive, Photos)
+- Mobile/tablet hamburger menu with overlay panel
+- Configurable accent colors via Micro.blog theme settings
 
-## Local Hugo preview (recommended)
+## Forking this theme
 
-This uses the **real Hugo templates** with live content from your JSON Feed and accent colors from `config.json` — the closest match to production on Micro.blog.
+1. Fork this repository on GitHub.
+2. Clone your fork locally.
+3. Customize templates in `layouts/`, styles in `static/assets/css/`, and defaults in `config.json`.
+4. Push your changes and import the theme on Micro.blog (see below).
+
+When maintaining your fork, you may optionally add the official Alpine repo as an upstream remote to pull in base-theme fixes:
+
+```bash
+git remote add upstream https://github.com/microdotblog/theme-alpine.git
+```
+
+## Deploying to Micro.blog
+
+1. Push your theme to a public GitHub repository.
+2. In Micro.blog: **Posts → Design → Edit Custom Themes → New Theme**.
+3. Clone your repository URL.
+4. Select **Alpine** as the base design (required for Alpine-derived themes), then activate your custom theme.
+
+See the [Micro.blog custom themes documentation](https://help.micro.blog/t/custom-themes/59) for details.
+
+## Theme configuration
+
+Accent colors are defined in [`config.json`](config.json) and exposed in the Micro.blog theme editor via [`plugin.json`](plugin.json):
+
+| Parameter | Purpose |
+|-----------|---------|
+| `alpine_accent_text_color` | Link and accent text color |
+| `alpine_accent_background_color` | Accent button background |
+| `alpine_hover_background_color` | Link hover background |
+
+Parameter names retain the `alpine_` prefix for compatibility with the Alpine base design on Micro.blog.
+
+## Local development (optional)
+
+You can preview the theme locally with Hugo. This is optional and not required for Micro.blog deployment.
 
 ### First-time setup
 
 ```bash
-npm run setup    # clones theme-blank, links this repo as theme-alpine
-npm run sync     # fetches https://asit.blog/feed.json → dev/content/post/
+npm run setup    # clones theme-blank and links this repo for Hugo
+npm run sync     # imports posts from a JSON Feed into dev/content/
 ```
 
 ### Run the dev server
@@ -30,53 +66,47 @@ npm run sync     # fetches https://asit.blog/feed.json → dev/content/post/
 npm run dev
 ```
 
-This starts three services together:
+Open [http://localhost:1313](http://localhost:1313).
 
-| Service | URL | Purpose |
-|---------|-----|---------|
-| Hugo | [http://localhost:1313](http://localhost:1313) | Real theme preview |
-| Agentation overlay | port 5174 (background) | Toolbar script injected into Hugo pages |
-| Agentation MCP | [http://localhost:4747](http://localhost:4747) | Syncs annotations to Cursor |
-
-Open **http://localhost:1313**, click the Agentation toolbar, and annotate any element. Your Cursor agent receives feedback via the Agentation MCP tools.
-
-Verify Agentation:
+For Hugo only (without optional Agentation tooling):
 
 ```bash
-npm run agentation:doctor
+npm run dev:hugo
 ```
 
 ### Sync options
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `FEED_URL` | `https://asit.blog/feed.json` | JSON Feed to import |
+| `FEED_URL` | none (required for sync) | JSON Feed URL to import posts from |
 | `BASE_URL` | `http://localhost:1313/` | Hugo `baseURL` for local links |
 
 Example:
 
 ```bash
-FEED_URL=https://asit.blog/feed.json npm run sync
+FEED_URL=https://example.com/feed.json npm run sync
 ```
 
-Accent colors (`alpine_accent_*`) are read from the root [`config.json`](config.json) when generating `dev/config.toml`.
-
-## Standalone React preview (optional)
-
-If you only want the React mock (without Hugo), use:
+### Standalone React preview (optional)
 
 ```bash
 npm run install:preview
 npm run dev:preview     # http://localhost:5173
 ```
 
-For theme work, use `npm run dev` instead — Hugo + Agentation on port 1313 is the recommended workflow.
+For accurate theme work, prefer `npm run dev` (Hugo on port 1313).
 
-## Deploying to Micro.blog
+## Repository layout
 
-1. Push changes to your GitHub fork.
-2. In Micro.blog: **Posts → Design → Edit Custom Themes → New Theme**.
-3. Clone your fork: `https://github.com/asitkhanda/theme-alpine`
-4. Select **Alpine** as the base design, then activate your custom theme.
+| Path | Purpose |
+|------|---------|
+| `layouts/` | Hugo templates (HTML) |
+| `static/assets/css/` | Stylesheets |
+| `config.json` | Default theme parameters |
+| `plugin.json` | Micro.blog theme editor fields |
+| `dev/` | Local Hugo preview site (generated; not deployed) |
+| `scripts/` | Local setup and feed sync helpers |
 
-See the [Micro.blog custom themes documentation](https://help.micro.blog/t/custom-themes/59) for details.
+## License
+
+See [LICENSE](LICENSE).

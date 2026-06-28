@@ -1,7 +1,7 @@
 {
-	"version": "1.1.6",
-	"title": "Alpine theme",
-	"description": "Micro.blog's Alpine theme, similar to Marfa theme.",
+	"version": "2.0.0",
+	"title": "Minimism",
+	"description": "A minimalist theme forked from Micro.blog's Alpine design, with dark mode, accent colors, and responsive navigation.",
 	"fields": [
 		{
 			"field": "params.alpine_accent_text_color",
