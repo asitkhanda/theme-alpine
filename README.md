@@ -17,7 +17,7 @@ Alpine itself builds on the Marfa theme, which traces back to [NeoCactus](https:
 
 ## Forking this theme
 
-1. Fork this repository on GitHub.
+1. Fork [github.com/asitkhanda/theme-minimism](https://github.com/asitkhanda/theme-minimism) on GitHub.
 2. Clone your fork locally.
 3. Customize templates in `layouts/`, styles in `static/assets/css/`, and defaults in `config.json`.
 4. Push your changes and import the theme on Micro.blog (see below).
@@ -30,12 +30,11 @@ git remote add upstream https://github.com/microdotblog/theme-alpine.git
 
 ## Deploying to Micro.blog
 
-1. Push your theme to a public GitHub repository.
-2. In Micro.blog: **Posts → Design → Edit Custom Themes → New Theme**.
-3. Clone your repository URL.
-4. Select **Alpine** as the base design (required for Alpine-derived themes), then activate your custom theme.
+1. Push your theme to a public GitHub repository (e.g. `https://github.com/asitkhanda/theme-minimism`).
+2. In Micro.blog: **Posts → Plug-ins → Plug-in Directory**, or use **Design → Edit Custom Themes → New Plug-in** to test first.
+3. Clone your repository URL and install the plug-in.
 
-See the [Micro.blog custom themes documentation](https://help.micro.blog/t/custom-themes/59) for details.
+See the [Micro.blog plug-ins documentation](https://help.micro.blog/t/plug-ins/104) for details.
 
 ## Theme configuration
 
